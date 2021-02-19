@@ -29,7 +29,7 @@ function filterShops(areas, shops) {
 
     for (var i = 0; i < shops.length; i++) {
         
-        console.log("shops: " + shops[i]);
+        console.log("shops: " + shops[i].querySelector(QUERY_SELECTORS.SHOP_AREAS).innerHTML);
         var shopAreas = shops[i].querySelector(QUERY_SELECTORS.SHOP_AREAS).innerHTML;
         var shops = shopAreas.split(',');
 
