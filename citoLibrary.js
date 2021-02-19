@@ -1,2 +1,7 @@
-function hello() { return "hello world" };
+function hello() { 
+    var msg = {
+        hello: 'hello world'
+    }
+    return msg;
+};
 
