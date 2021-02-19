@@ -1,15 +1,13 @@
-const QUERY_SELECTORS = {
-    AREA_CITY: '#area-city',
-    AREA_NAME: '#area-name',
-    SHOP_AREAS: '#shop-areas',
-}
 
-function filterAreas(city, areas) {
+function filterAreas(city, areaContainers, filteredAreasContainer, areaCity) {
 
     var filteredAreas = [];
+    var areas = document.getElementsByClassName(areaContainers);
+    var filteredAreasContainer = document.getElementById(filteredAreasContainer);
+    var city = document.getElementById(city);
 
     for (var i = 0; i < areas.length; i++) {
-        if (areas[i].querySelector(QUERY_SELECTORS.AREA_CITY).innerHTML != city) {
+        if (areas[i].querySelector(areaCity).innerHTML != city) {
             areas[i].style.display = 'hidden';
         }
         else {
@@ -17,7 +15,9 @@ function filterAreas(city, areas) {
         }
     }
 
-    return filteredAreas;
+    for (var i = 0; i < filteredAreas.length; i++) {
+        filteredAreasContainer.appendChild(filteredAreas[i]);
+    }
 }
 
 
