@@ -23,25 +23,26 @@ function filterAreas(city, areas) {
 }
 
 
-function filterShops(areas, shops) {
+function filterShops(areaName, shopAreas, filteredShopContainer) {
 
-    var filteredShops = [];
+    var areaNameList = document.getElementsByClassName(areaName);
+    var shopAreas = document.getElementsByClassName(shopAreas);
+    var filteredShopContainer = document.getElementById(filteredShopContainer);
 
-    for (var i = 0; i < shops.length; i++) {
-        
-        console.log("shops: " + shops[i].querySelector(QUERY_SELECTORS.SHOP_AREAS).innerHTML);
-        var shopAreas = shops[i].querySelector(QUERY_SELECTORS.SHOP_AREAS).innerHTML;
-        var shops = shopAreas.split(',');
 
-        for (var y = 0; y < shops.length; y++) {
-            for (var x = 0; x < areas.length; x++) {
-                if (areas[x].querySelector(QUERY_SELECTORS.AREA_NAME).innerHTML == shops[y]) {
-                    filterShops.push(shops[i]);
+
+    for (var i = 0; i < shopAreas.length; i++) {
+
+        var areaString = shopAreas[i].innerHTML;
+        var areaArray = areaString.split(',');
+
+        for (var y = 0; y < areaArray.length; y++) {
+            for (var x = 0; x < areaNameList.length; x++) {
+                if (areaNameList[x].innerHTML == areaArray[y]) {
+                    filteredShopContainer.appendChild(shopAreas[i].parentNode);
                 }
             }
         }
-    }
-
-    return filteredShops;
+    } 
 }
 
