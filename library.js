@@ -4,6 +4,19 @@ const QUERY_SELECTOR = {
 
 }
 
+function SortAreas(city, areas) {
+    var filteredAreas = [];
+    for (var i = 0; i < areas.length; i++) {
+        if (areas[i].querySelector(QUERY_SELECTOR.AREA_CITY).innerHTML != city) {
+            areas[i].style.display = 'none';
+        }
+        else {
+            filteredAreas.push(areas[i]);
+        }
+    }    
+    return filteredAreas;
+}
+
 function Cito(selector) {
     
     const self = {
@@ -22,11 +35,7 @@ function Cito(selector) {
                 else {
                     filteredAreas.push(areas[i]);
                 }
-            }
-
-
-    
-            
+            }    
             return filteredAreas;
         }
     }
