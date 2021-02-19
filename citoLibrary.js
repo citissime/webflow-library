@@ -1,6 +1,3 @@
-import { firebase } from "./fbConfig";
-
-
 const QUERY_SELECTORS = {
 
     AREA_CITY: '#area-city',
