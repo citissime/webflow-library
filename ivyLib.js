@@ -104,21 +104,3 @@ for (var i = 0; i < drawerContainers.length; i++) {
     drawerContainers[i].querySelector('#open-drawer-button'),
     drawerContainers[i].querySelector('#filter-buttons-container')), false); 
 };
-
-function toggleActive(button, indicator) {
-	if (indicator.getAttribute('active')) {
-  	    indicator.style.backgroundColor = 'transparent';
-   	    indicator.removeAttribute('active');
-    }
-    else {
-  	    indicator.style.backgroundColor = 'red';
-        indicator.setAttribute('active', 'active');
-    }
-};
-
-for(var i=0; i < filterButtons.length; i++) {
-	filterButtons[i].querySelector('#filter-button')
-    .addEventListener("click", toggleActive
-    .bind(this, filterButtons[i].querySelector('#filter-button'), 
-    filterButtons[i].querySelector('#active-indicator')), false);
-};
