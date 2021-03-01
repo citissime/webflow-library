@@ -137,3 +137,12 @@ function openModal(product) {
     document.getElementById("modal-wrapper").style.display = "flex";
     document.getElementById("buy-modal").style.display = "flex";
 };
+
+function filterMoods(list, filters) {
+    for (var i = 0; i < list.length; i++) {
+        list[i].style.display = 'flex';
+        if (!filters.includes(list[i].querySelector('#name').textContent)) {
+            list[i].style.display = 'none';
+        }
+    }
+}
