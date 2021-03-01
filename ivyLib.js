@@ -1,4 +1,8 @@
 
+var drawerContainers = document.getElementsByClassName('filter-drawer-container');
+var filterButtons = document.getElementsByClassName('filter-button-container');
+var productList = document.getElementsByClassName("product-item");
+
 function confirmAge() {
     
     document.getElementById('age-yes-box').addEventListener('click', function(){ confirmAge() })
@@ -32,9 +36,6 @@ function confirmAge() {
 	    document.getElementById('age-confirmation-container').style.display = 'block';
     }
 };
-
-var drawerContainers = document.getElementsByClassName('filter-drawer-container');
-var filterButtons = document.getElementsByClassName('filter-button-container');
 
 function changeDrawerWidth(drawerContainer, drawerButton, filterContainer) {
   var r = $.Deferred();
