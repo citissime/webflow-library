@@ -1,48 +1,34 @@
 
-function filterAreas(city, areaContainers, filteredAreasContainer, areaCity) {
+function confirmAge() {
+    
+    document.getElementById('age-yes-box').addEventListener('click', function(){ confirmAge() })
+    document.getElementById('continue-button').addEventListener('click', function(){ closeAgeContainer() })
 
-    var filteredAreas = [];
-    var areas = document.getElementsByClassName(areaContainers);
-    var filteredAreasContainer = document.getElementById(filteredAreasContainer);
-    var city = document.getElementById(city);
-
-    for (var i = 0; i < areas.length; i++) {
-        if (areas[i].querySelector(areaCity).innerHTML != city) {
-            areas[i].style.display = 'hidden';
+    function confirmAge() {
+	    if (document.getElementById('age-yes-box').getAttribute('confirmed')) {
+  	        document.getElementById('age-yes-box').removeAttribute('confirmed');
+            document.getElementById('yes-inner').style.display = 'none';
+            document.getElementById('continue-button').style.backgroundColor = 'gray';
         }
         else {
-            filteredAreas.push(areas[i]);
+            document.getElementById('age-yes-box').setAttribute('confirmed', 'confirmed');
+            document.getElementById('yes-inner').style.display = 'flex';
+  	        document.getElementById('continue-button').style.backgroundColor = 'black';
         }
+	    document.getElementById('age-error-box').style.display = 'none';
     }
 
-    for (var i = 0; i < filteredAreas.length; i++) {
-        filteredAreasContainer.appendChild(filteredAreas[i]);
-    }
-}
+    function closeAgeContainer() {
+	    if (document.getElementById('age-yes-box').getAttribute('confirmed')) {
+   	        localStorage.setItem('age', 'confirmed');
+		    document.getElementById('age-confirmation-container').style.display = 'none';
+        }
+        else {
+  	        document.getElementById('age-error-box').style.display = 'flex';
+        }
+    } 
 
-
-function filterShops(filteredAreasContainer, shopsContainer, filteredShopsContainer, shopAreas, areaName) {
-
-    var areaNameList = document.getElementById(filteredAreasContainer).children;   
-    var shops = document.getElementsByClassName(shopsContainer);
-    var filteredShopContainer = document.getElementById(filteredShopsContainer);
-    var filteredShops = [];
-
-    for (var i = 0; i < shops.length; i++) {
-
-        var areaString = shops[i].querySelector(shopAreas).innerHTML;
-        var areaArray = areaString.split(',');
-        for (var y = 0; y < areaArray.length; y++) {
-      	    for (var x = 0; x < areaNameList.length; x++) {
-        	    if (areaNameList[x].querySelector(areaName).innerHTML == areaArray[y]) {
-                filteredShops.push(shops[i]);
-                }
-      	    }
-    	}
-  	} 
-    
-    for (var i = 0; i < filteredShops.length; i++) {
-    	filteredShopContainer.appendChild(filteredShops[i])
+    if (!localStorage.getItem('age')) {
+	    document.getElementById('age-confirmation-container').style.display = 'block';
     }
 }
-
