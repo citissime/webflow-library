@@ -104,3 +104,36 @@ for (var i = 0; i < drawerContainers.length; i++) {
     drawerContainers[i].querySelector('#open-drawer-button'),
     drawerContainers[i].querySelector('#filter-buttons-container')), false); 
 };
+
+for (var i = 0; i < productList.length; i++) {
+    var product = {
+        primaryImage: productList[i].querySelector('.open-button').style.backgroundImage,
+        secondaryImage: productList[i].querySelector('.second-product-image').style.backgroundImage,
+        effectIcon: productList[i].querySelector('.effect-icon-container').style.backgroundImage,
+        name: productList[i].querySelector('#product-name').textContent,
+        brand: productList[i].querySelector('#brand-name').textContent,
+        storeNames: productList[i].querySelector('#store-names').textContent,
+        price: productList[i].querySelector('#product-price').textContent,
+        description: productList[i].querySelector('#product-description').textContent,
+        quantity: productList[i].querySelector('#product-quantity').textContent,
+        moodNames: productList[i].querySelector('#mood-names').textContent,
+        currentProductButton: productList[i].querySelector('#current-product-button').cloneNode(true),
+    }
+    productList[i].querySelector('.open-button').addEventListener('click', openModal.bind(this, product));
+};
+
+function openModal(product) {
+    var modal = document.getElementById('buy-modal');
+    modal.querySelector('#modal-slide-one').style.backgroundImage = product.primaryImage;
+    modal.querySelector('#modal-slide-two').style.backgroundImage = product.secondaryImage;
+    modal.querySelector('#modal-product-brand').textContent = product.brand;
+    modal.querySelector('#modal-product-name').textContent = product.name;
+    modal.querySelector('#modal-product-price').textContent = product.price;
+    modal.querySelector('#modal-product-description').textContent = product.description;
+    modal.querySelector('#modal-product-quantity').textContent = product.quantity;
+    modal.querySelector('#modal-product-effect-icon').style.backgroundImage = product.effectIcon;
+    modal.querySelector('#product-page-button').replaceChild(product.currentProductButton, modal.querySelector('#product-page-button').childNodes[0]);
+    filterMoods(modal.querySelector('#modal-mood-icons-list').children, product.moodNames);
+    document.getElementById("modal-wrapper").style.display = "flex";
+    document.getElementById("buy-modal").style.display = "flex";
+};
