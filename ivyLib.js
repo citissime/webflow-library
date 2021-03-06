@@ -119,6 +119,7 @@ for (var i = 0; i < productList.length; i++) {
         quantity: productList[i].querySelector('#product-quantity').textContent,
         moodNames: productList[i].querySelector('#mood-names').textContent,
         currentProductButton: productList[i].querySelector('#current-product-button').cloneNode(true),
+        addToCartButton: productList[i].querySelector('#add-to-cart-button').cloneNode(true)
     }
     productList[i].querySelector('.open-button').addEventListener('click', openModal.bind(this, product));
 };
@@ -135,6 +136,7 @@ function openModal(product) {
     modal.querySelector('#modal-product-effect-icon').style.backgroundImage = product.effectIcon;
     modal.querySelector('#product-page-button').replaceChild(product.currentProductButton, modal.querySelector('#product-page-button').childNodes[0]);
     filterMoods(modal.querySelector('#modal-mood-icons-list').children, product.moodNames);
+    modal.querySelector('#add-to-cart-container').replaceChild(product.addToCartButton, modal.querySelector('#').childNodes[0]);
     document.getElementById("modal-wrapper").style.display = "flex";
     document.getElementById("buy-modal").style.display = "flex";
 };
