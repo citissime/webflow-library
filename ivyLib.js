@@ -136,7 +136,7 @@ function openModal(product) {
     modal.querySelector('#modal-product-effect-icon').style.backgroundImage = product.effectIcon;
     modal.querySelector('#product-page-button').replaceChild(product.currentProductButton, modal.querySelector('#product-page-button').childNodes[0]);
     filterMoods(modal.querySelector('#modal-mood-icons-list').children, product.moodNames);
-    modal.querySelector('#add-to-cart-container').replaceChild(product.addToCartButton, modal.querySelector('#').childNodes[0]);
+    modal.querySelector('#add-to-cart-container').replaceChild(product.addToCartButton, modal.querySelector('#add-to-cart-container').childNodes[0]);
     document.getElementById("modal-wrapper").style.display = "flex";
     document.getElementById("buy-modal").style.display = "flex";
 };
